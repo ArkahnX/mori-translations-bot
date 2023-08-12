@@ -43,7 +43,7 @@
     "piscina": "^3.1.0",
     "ramda": "^0.27.1",
     "socket.io-client": "^4.2.0",
-    "ts-deepmerge": "^1.0.8",
+    "ts-deepmerge": "^6.2.0",
     "ts-toolbelt": "^6.15.5",
     "ws": "^8.9.0"
   },
