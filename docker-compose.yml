@@ -4,7 +4,7 @@ services:
   bot:
     build: .
     environment:
-      DISCORD_PROD_TOKEN: ${DISCORD_PROD_TOKEN}
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
       DEEPL_KEY: ${DEEPL_KEY}
       MONGODB_URL: mongodb://db/luna
     depends_on:

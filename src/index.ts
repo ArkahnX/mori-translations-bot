@@ -8,8 +8,9 @@ import { config } from './config'
 import { client } from './core/'
 import mongoose from 'mongoose'
 import { debug } from './helpers'
+import { codeBlock, roleMention } from 'discord.js'
 
-const MONGODB_URL = process.env.MONGODB_URL ?? 'mongodb://localhost/luna'
+const MONGODB_URL = process.env.MONGODB_URL ?? 'mongodb://db/luna'
 
 mongoose.connect(MONGODB_URL, {
   useNewUrlParser: true,
@@ -20,8 +21,16 @@ mongoose.connect(MONGODB_URL, {
 process.on('uncaughtException', function (err) {
   debug('Uncaught exception: ' + err)
   client.guilds.cache.find((g) => g.id === '')
-  const ch = client.channels.cache.get('798600485652398120')
-  ch?.isTextBased() && ch.send('<@150696503428644864> UNCAUGHT EXCEPTION')
+  if (process.env.DISCORD_ERROR_CHANNEL_ID) {
+    const ch = client.channels.cache.get(process.env.DISCORD_ERROR_CHANNEL_ID)
+    if(ch && ch.isTextBased()) {
+      if (process.env.DISCORD_ERROR_ROLE_ID) {
+        ch.send(`${roleMention(process.env.DISCORD_ERROR_ROLE_ID)} UNCAUGHT EXCEPTION: ${codeBlock(JSON.stringify(err))}`)
+      } else {
+        ch.send(`UNCAUGHT EXCEPTION: ${codeBlock(JSON.stringify(err))}`)
+      }
+    }
+  }
 
   debug(err.stack)
 })

@@ -4,7 +4,7 @@ import { isGuildOwner, isBotOwner, hasKickPerms } from './helpers/discord'
 
 export const config: LunaBotConfig = {
   deeplKey: process.env.DEEPL_KEY,
-  ownerId: '150696503428644864',
+  ownerId: process.env.DiSCORD_BOT_OWNER_ID,
   permLevels: [
     { level: 0, name: 'User', check: () => true },
     { level: 1, name: 'Blacklister', check: isBlacklister },
@@ -14,9 +14,7 @@ export const config: LunaBotConfig = {
     { level: 10, name: 'Bot Owner', check: isBotOwner },
   ],
   prefix: '/',
-  token: process.env.DISCORD_PROD_TOKEN,
-  twitcastingId: process.env.TWITCASTING_CLIENT_ID,
-  twitcastingSecret: process.env.TWITCASTING_CLIENT_SECRET,
+  token: process.env.DISCORD_TOKEN,
   holodexKey: process.env.HOLODEX_API_KEY,
 }
 
