@@ -1,5 +1,5 @@
 /** @file Exports main streamer list and streamer-related utility functions */
-import { CommandInteraction, Message } from 'discord.js'
+import { CommandInteraction, Message, bold } from 'discord.js'
 import { ciEquals } from '../../../helpers'
 import { createEmbed, reply } from '../../../helpers/discord'
 import { YouTubeChannelId } from '../../../modules/holodex/frames'
@@ -22,7 +22,22 @@ export type StreamerName = typeof names[number] | 'all'
 export type StreamerTwitter = typeof twitters[number]
 
 export function getStreamerList(): string {
-  return streamers.map((streamer) => streamer.name).join(', ')
+  const groups: Map<string, Set<string>> = new Map();
+  for(const streamer of streamers) {
+    const group = streamer.groups[0];
+    if(groups.has(group) === false) {
+      groups.set(group,new Set());
+    }
+    const talents = groups.get(group) as Set<string>;
+    talents.add(streamer.name)
+  }
+  const result = [];
+  for(const [group, talents] of groups.entries()) {
+    result.push(`${bold(group)}: ${Array.from(talents.values()).sort().join(", ")}`)
+  }
+  result.sort();
+  // return streamers.map((streamer) => streamer.name).join(', ')
+  return result.join("\n");
 }
 
 export function findStreamerName(name: string): StreamerName | undefined {

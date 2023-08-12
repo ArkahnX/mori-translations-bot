@@ -116,11 +116,20 @@ export const indies = [
   },
   {
     name: 'rurudo',
-    ytId: 'https://www.youtube.com/channel/UCim0N3tvLijU_I3jbJeJV8g',
+    ytId: 'UCim0N3tvLijU_I3jbJeJV8g',
     chName: 'るるどらいおん',
     picture: '',
     groups: ['indies'],
     twitter: 'rurudo_',
+    aliases: [],
+  },
+  {
+    name: 'KEI URANA',
+    ytId: 'UCchmEmNnC5yTMT0xp0D6LxQ',
+    chName: '裏那圭',
+    picture: '',
+    groups: ['indies'],
+    twitter: 'KEI_URANA',
     aliases: [],
   },
   // {
