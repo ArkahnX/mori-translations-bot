@@ -71,9 +71,6 @@ export class GuildSettings {
   @prop({ default: false })
   public threads: boolean
 
-  @prop({ type: () => WatchFeatureSettings, default: [] })
-  public twitcasting: WatchFeatureSettings[]
-
   @prop({ type: () => WatchFeatureSettings })
   youtube: WatchFeatureSettings[]
 }
@@ -82,6 +79,6 @@ export const GuildSettingsDb = getModelForClass(GuildSettings)
 
 export type RoleSetting = 'admins' | 'blacklisters'
 
-export type WatchFeature = 'community' | 'gossip' | 'cameos' | 'relay' | 'twitcasting' | 'youtube'
+export type WatchFeature = 'community' | 'gossip' | 'cameos' | 'relay' | 'youtube'
 
 export type SettingToggle = 'deepl' | 'modMessages' | 'threads'

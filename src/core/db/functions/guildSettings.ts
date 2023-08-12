@@ -123,7 +123,6 @@ function getGuildSettings(g: Guild | Snowflake): GuildSettings {
     modMessages: true,
     relay: [],
     threads: false,
-    twitcasting: [],
     youtube: [],
   }
   return guildSettingsEnmap.ensure(_id, defaults)

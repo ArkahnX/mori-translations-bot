@@ -13,8 +13,6 @@ export async function ready() {
     import('../../modules/community/communityNotifier')
     debug('youtube notifier..')
     import('../../modules/youtubeNotifier')
-    debug('twitcasting notifier..')
-    import('../../modules/twitcastingNotifier')
     debug('chatrelayer')
     import('../../modules/livechat/chatRelayer')
 

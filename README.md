@@ -10,7 +10,7 @@ The code is messy, don't look. :)
 - Relaying YouTube livestream chat translations in real time from YouTube livechat to Discord
 - Relaying channel owner and channel mod messages
 - Relaying a streamer's activity in other streamers' livestream chat
-- Sending notifications for community posts, YouTube streams, TwitCasting streams
+- Sending notifications for community posts, YouTube streams
 - Easy translator blacklisting system 
 
 ## Screenshots

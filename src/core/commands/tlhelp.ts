@@ -94,7 +94,6 @@ function getSettingsField({
   cameos,
   community,
   youtube,
-  twitcasting,
 }: GuildSettings): EmbedField {
   return {
     name: 'Current settings',
@@ -105,7 +104,6 @@ function getSettingsField({
       ${emoji.peek} **Gossip:** ${getWatchList('gossip', gossip)}
       :family_mmbb: **Community posts:** ${getWatchList('community', community)}
       ${emoji.yt} **YouTube lives:** ${getWatchList('youtube', youtube)}
-      ${emoji.tc} **TwitCasting lives:** ${getWatchList('twitcasting', twitcasting)}
     `,
   }
 }

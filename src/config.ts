@@ -32,7 +32,5 @@ interface LunaBotConfig {
   permLevels: PermLevel[]
   prefix: string
   token?: string
-  twitcastingId?: string
-  twitcastingSecret?: string
   holodexKey?: string
 }
