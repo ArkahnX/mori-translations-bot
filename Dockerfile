@@ -11,7 +11,8 @@ RUN npm ci
 # build ts files
 COPY ./src ./src
 COPY tsconfig.json ./
+RUN npm install typescript --save-dev
 RUN npm run tsc
-RUN npm run register
+CMD ["npm run register"]
 
 CMD ["node", "./build/index.js"]
