@@ -20,7 +20,7 @@ function CommunityEmitter(): EventEmitter {
 }
 
 async function continuouslyEmitNewPosts(emitter: EventEmitter): Promise<void> {
-  debug('checking for new community posts')
+  // debug('checking for new community posts')
   const allSettings = getAllSettings()
   const subs = removeDupes(
     allSettings
@@ -33,7 +33,7 @@ async function continuouslyEmitNewPosts(emitter: EventEmitter): Promise<void> {
     await asyncTryOrLog(() => checkChannel(ytId, emitter))
   }
 
-  setTimeout(() => continuouslyEmitNewPosts(emitter), 2000)
+  setTimeout(() => continuouslyEmitNewPosts(emitter), 30000)
 }
 
 async function checkChannel(ytId: string, emitter: EventEmitter): Promise<void> {
