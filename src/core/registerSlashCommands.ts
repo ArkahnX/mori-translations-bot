@@ -24,7 +24,9 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN)
     await rest.put(Routes.applicationCommands(clientId), { body })
 
     log('Successfully reloaded application (/) commands.')
+    process.exit();
   } catch (error) {
     console.error(error)
+    process.exit(1);
   }
 })()
