@@ -2,7 +2,7 @@
  * @file This file manages addition and removals from WatchFeatureSettings
  * via Discord command.
  **/
-import { createEmbed, createEmbedMessage, emoji, reply } from '../../../helpers/discord'
+import { createEmbed, createEmbedMessage, emoji, getEmoji, reply } from '../../../helpers/discord'
 import { match } from '../../../helpers/language'
 import { getSettings, updateSettings } from './'
 import { CommandInteraction, /* EmbedFieldData, */ Snowflake } from 'discord.js'
@@ -84,14 +84,14 @@ function addEntry({ g, feature, intr, streamer, role, add }: ValidatedOptions): 
             inline: true,
           },
           {
-            name: `${emoji.discord} In channel`,
+            name: `${getEmoji("discord")} In channel`,
             value: `<#${intr.channel?.id}>`,
             inline: true,
           },
           ...(role
             ? [
                 {
-                  name: `${emoji.ping} @mentioning`,
+                  name: `${getEmoji("ping")} @mentioning`,
                   value: `<@&${role}>`,
                   inline: true,
                 },
@@ -115,7 +115,7 @@ function replyCurrent({ g, feature, intr, streamer, role, add }: ValidatedOption
     intr,
     createEmbed(
       {
-        description: 'Current',
+        description: 'Relayed in current channel',
         fields: [
           ...getEntryFields(newEntries),
         ],
@@ -142,7 +142,7 @@ function removeEntry({ feature, intr, streamer, remove, g }: ValidatedOptions): 
             inline: true,
           },
           {
-            name: `${emoji.discord} In channel`,
+            name: `${getEmoji("discord")} In channel`,
             value: `<#${intr.channel!.id}>`,
             inline: true,
           },

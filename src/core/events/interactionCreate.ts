@@ -4,6 +4,7 @@ import {
   Snowflake,
   GuildMember,
   ChatInputCommandInteraction,
+  inlineCode,
 } from 'discord.js'
 import { doNothing, match, isNotNil, log, debug } from '../../helpers'
 import { Command, createEmbedMessage, findTextChannel } from '../../helpers/discord'
@@ -23,6 +24,12 @@ import { commands } from '../lunaBotClient'
 
 const commandNames = new Set(commands.keys())
 
+// add moriphone
+const messages = [
+  "That's not for you to touch.",
+  inlineCode("*Extremely loud buzzer* That's not for you to touch."),
+]
+
 export async function interactionCreate(intr: Interaction): Promise<void> {
   if ((intr as any).commandName && !commandNames.has((intr as any).commandName)) return
   if (!intr.inGuild()) return
@@ -36,7 +43,7 @@ export async function interactionCreate(intr: Interaction): Promise<void> {
         createEmbed({
           title: 'Insufficient permissions',
           description:
-            "you don't have the right, O you don't have the right, therefore you don't have the right, O you don't have the right",
+          inlineCode("*Extremely loud buzzer* That's not for you to touch."),
         }),
       )
     } else {

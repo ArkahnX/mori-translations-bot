@@ -1,4 +1,4 @@
-import { Command, emoji } from '../../helpers/discord'
+import { Command, emoji, getEmoji } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { ChatInputCommandInteraction } from 'discord.js'
 import { validateInputAndModifyEntryList } from '../db/functions'
@@ -25,16 +25,16 @@ export const cameos: Command = {
       role: intr.options.getRole('role')?.id,
       feature: 'cameos',
       add: {
-        success: `${emoji.holo} Relaying cameos in other chats`,
+        success: `${getEmoji( "holo")} Relaying cameos in other chats`,
         failure: oneLine`
-          :warning: ${streamer}'s cameos in other chats already being
+          ${getEmoji( "warning")} ${streamer}'s cameos in other chats already being
           relayed in this channel.
         `,
       },
       remove: {
-        success: `${emoji.holo} Stopped relaying chat cameos`,
+        success: `${getEmoji( "holo")} Stopped relaying chat cameos`,
         failure: oneLine`
-          :warning: ${streamer}'s cameos' weren't already being relayed
+          ${getEmoji( "warning")} ${streamer}'s cameos' weren't already being relayed
           in <#${intr.channel!.id}>. Are you in the right channel?
         `,
       },

@@ -1,5 +1,5 @@
 import { client } from '../core/'
-import { TextChannel } from 'discord.js'
+import { GuildEmoji, TextChannel } from 'discord.js'
 import { GuildSettings, WatchFeature } from '../core/db/models'
 import { Streamer } from '../core/db/streamers'
 import { addRelayNotice, getRelayNotices, getSubbedGuilds } from '../core/db/functions'
@@ -69,7 +69,7 @@ export interface NotifyOptions {
   feature: WatchFeature
   streamer: Streamer
   embedBody: string
-  emoji: string
+  emoji: string|GuildEmoji
   avatarUrl: string
   videoId?: VideoId
   nonEmbedText?: string

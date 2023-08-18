@@ -1,4 +1,4 @@
-import { Command, createEmbed, createEmbedMessage, reply } from '../../helpers/discord'
+import { Command, createEmbed, createEmbedMessage, emoji, getEmoji, reply } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { getFlatGuildRelayHistory, addBlacklisted, getSettings } from '../db/functions'
 import { CommandInteraction, ContextMenuCommandInteraction } from 'discord.js'
@@ -41,7 +41,7 @@ async function blacklistTl(intr: ContextMenuCommandInteraction, reason: string):
 }
 
 function notifyDuplicate(intr: ContextMenuCommandInteraction): void {
-  reply(intr, createEmbedMessage(':warning: Already blacklisted'))
+  reply(intr, createEmbedMessage(`${getEmoji("warning")} Already blacklisted`))
 }
 
 function addBlacklistedAndConfirm(
@@ -55,17 +55,17 @@ function addBlacklistedAndConfirm(
     createEmbed({
       fields: [
         {
-          name: ':no_entry: Blacklister',
+          name: `${getEmoji("no_entry")} Blacklister`,
           value: intr.user.toString(),
           inline: true,
         },
         {
-          name: ':clown: Blacklisted channel',
+          name: `${getEmoji("clown")} Blacklisted channel`,
           value: author,
           inline: true,
         },
         {
-          name: ':bookmark_tabs: Reason',
+          name: `${getEmoji("bookmark_tabs")} Reason`,
           value: reason,
           inline: true,
         },
@@ -75,5 +75,5 @@ function addBlacklistedAndConfirm(
 }
 
 function notifyTranslatorNotFound(intr: ContextMenuCommandInteraction): void {
-  reply(intr, createEmbedMessage(':warning: Translator data not found.'))
+  reply(intr, createEmbedMessage(`${getEmoji("warning")} Translator data not found.`))
 }

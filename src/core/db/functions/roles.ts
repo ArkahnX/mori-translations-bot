@@ -1,4 +1,4 @@
-import { createEmbedMessage, reply, validateRole } from '../../../helpers/discord'
+import { createEmbedMessage, emoji, getEmoji, reply, validateRole } from '../../../helpers/discord'
 import { getSettings, updateSettings } from './'
 import { CommandInteraction, Role, Snowflake } from 'discord.js'
 import { GuildSettings, RoleSetting } from '../models'
@@ -39,7 +39,7 @@ function addRole(opts: ValidatedOptions): void {
   reply(
     opts.intr,
     createEmbedMessage(`
-    :white_check_mark: <@&${opts.role}> was added to the ${opts.type} list.
+    ${getEmoji("white_check_mark")} <@&${opts.role}> was added to the ${opts.type} list.
     ${getRoleList(newRoles)}
   `),
   )
@@ -51,7 +51,7 @@ async function removeRole(opts: ValidatedOptions): Promise<void> {
   reply(
     opts.intr,
     createEmbedMessage(`
-    :white_check_mark: <@&${opts.role}> was removed from the ${opts.type} list.
+    ${getEmoji("white_check_mark")} <@&${opts.role}> was removed from the ${opts.type} list.
     ${getRoleList(newRoles)}
   `),
   )
@@ -61,7 +61,7 @@ function notifyNotNew(opts: ValidatedOptions): void {
   reply(
     opts.intr,
     createEmbedMessage(`
-    :warning: <@&${opts.role}> already in the ${opts.type} list.
+    ${getEmoji("warning")} <@&${opts.role}> already in the ${opts.type} list.
     ${getRoleList(opts.g[opts.type])}
   `),
   )
@@ -71,12 +71,16 @@ function notifyNotFound(opts: ValidatedOptions): void {
   reply(
     opts.intr,
     createEmbedMessage(`
-    :warning: <@&${opts.role}> not found in the current ${opts.type} list.
+    ${getEmoji("warning")} <@&${opts.role}> not found in the current ${opts.type} list.
     ${getRoleList(opts.g[opts.type])}
   `),
   )
 }
 
 function getRoleList(roles: Snowflake[]) {
-  return `**Current**: ${roles.map((id) => '<@&' + id + '>').join(' ')}`
+  let roleString = roles.map((id) => '<@&' + id + '>');
+  if(roleString.length === 0) {
+    roleString.push("No one");
+  }
+  return `**Current**: ${roleString.join(' ')}`
 }

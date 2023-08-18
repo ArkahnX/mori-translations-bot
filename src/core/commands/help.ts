@@ -1,10 +1,10 @@
 import { commands } from '../lunaBotClient'
 import { getPermLevel, getSettings } from '../db/functions'
-import { ChatInputCommandInteraction, EmbedField, GuildMember } from 'discord.js'
+import { ChatInputCommandInteraction, EmbedField, GuildMember, inlineCode } from 'discord.js'
 import { Map, Set } from 'immutable'
 import { GuildSettings, WatchFeatureSettings, WatchFeature } from '../db/models'
 import { head, isEmpty } from 'ramda'
-import { Command, createEmbed, emoji, reply } from '../../helpers/discord'
+import { Command, createEmbed, emoji, getEmoji, reply } from '../../helpers/discord'
 import { toTitleCase } from '../../helpers/language'
 import { stripIndents } from 'common-tags'
 import { config } from '../../config'
@@ -13,7 +13,7 @@ import { SlashCommandBuilder } from '@discordjs/builders'
 const description =
   'Displays available commands for your permission level in the requested category.'
 
-export const tlhelp: Command = {
+export const help: Command = {
   config: {
     permLevel: 0,
   },
@@ -22,7 +22,7 @@ export const tlhelp: Command = {
     description,
   },
   slash: new SlashCommandBuilder()
-    .setName('tlhelp')
+    .setName('help')
     .setDescription(description)
     .addStringOption((option) => option.setName('category').setDescription('category')),
   callback: async (intr: ChatInputCommandInteraction) => {
@@ -67,9 +67,32 @@ function getCategoryHelp(category: string) {
 }
 
 function getMainHelp(categories: Set<string>, settings: GuildSettings) {
+  const messages = [
+    `${getEmoji('MoriRap')} Love, the me that's killing you ${getEmoji('MoriRap')}`,
+    `${getEmoji('MoriRap')} ${inlineCode("Let's hit the sidewalk")} ${getEmoji('MoriRap')}`,
+    `${getEmoji('MoriRap')} Red tomorrow, Red today / Dread, sorrow / can't turn away ${getEmoji(
+      'MoriRap',
+    )}`,
+    `${getEmoji(
+      'MoriRap',
+    )} As petals fly, I’ll dance your tune, don’t hold your breath for me ${getEmoji('MoriRap')}`,
+    `${getEmoji('MoriRap')} a yeet yeet skrt to the yacht yacht steeze ${getEmoji('MoriRap')}`,
+    `${getEmoji(
+      'MoriRap',
+    )} knock ‘em unconscious, Bring ‘em back to life, then we tell ‘em “hey, watch this:” ${getEmoji(
+      'MoriRap',
+    )}`,
+    `${getEmoji('MoriRap')} As if a million skeletons hit that "Subscribe" for satire ${getEmoji(
+      'MoriRap',
+    )}`,
+    `${getEmoji('MoriMoney')} what a message no chad ${getEmoji('MoriMoney')}`,
+    `${getEmoji('MoriDeath')} "Get Ripped, Skip Class" --Death Sensei, circa 2020 ${getEmoji(
+      'MoriDeath',
+    )}`,
+  ]
   return createEmbed(
     {
-      description: ':candy: I am the Cutest Genius Sexy Beautiful Professor! :candy:',
+      description: messages[Math.floor(Math.random() * messages.length)],
       fields: [
         ...getCategoryFields(categories),
         getSettingsField(settings),
@@ -83,27 +106,20 @@ function getMainHelp(categories: Set<string>, settings: GuildSettings) {
 function getCategoryFields(categories: Set<string>): Set<EmbedField> {
   return categories.map((category) => ({
     name: category,
-    value: `/tlhelp [category: ${category.toLowerCase()}]`,
+    value: `/help [category: ${category.toLowerCase()}]`,
     inline: true,
   }))
 }
 
-function getSettingsField({
-  relay,
-  gossip,
-  cameos,
-  community,
-  youtube,
-}: GuildSettings): EmbedField {
+function getSettingsField({ relay, translate, cameos, community }: GuildSettings): EmbedField {
   return {
     name: 'Current settings',
     inline: false,
     value: stripIndents`
-      :speech_balloon: **Translation relay:** ${getWatchList('relay', relay)}
-      ${emoji.holo} **Live chat cameos:** ${getWatchList('cameos', cameos)}
-      ${emoji.peek} **Gossip:** ${getWatchList('gossip', gossip)}
-      :family_mmbb: **Community posts:** ${getWatchList('community', community)}
-      ${emoji.yt} **YouTube lives:** ${getWatchList('youtube', youtube)}
+      ${getEmoji('speech_balloon')} **Full relay:** ${getWatchList('relay', relay)}
+      ${getEmoji('speech_balloon')} **TL Only relay:** ${getWatchList('translate', translate)}
+      ${getEmoji('holo')} **Live chat cameos:** ${getWatchList('cameos', cameos)}
+      ${getEmoji('family_mmbb')} **Community posts:** ${getWatchList('community', community)}
     `,
   }
 }
@@ -113,8 +129,8 @@ function getBotManagerField(settings: GuildSettings): EmbedField {
     name: 'Bot managers',
     inline: false,
     value: `
-      :tools: **Admins:** ${getRoleList('admins', settings)}
-      :no_entry: **Blacklisters:** ${getRoleList('blacklisters', settings)}
+    ${getEmoji('tools')} **Admins:** ${getRoleList('admins', settings)}
+    ${getEmoji('no_entry')} **Blacklisters:** ${getRoleList('blacklisters', settings)}
     `,
   }
 }

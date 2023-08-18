@@ -1,4 +1,4 @@
-import { Command } from '../../helpers/discord'
+import { Command, emoji, getEmoji } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { ChatInputCommandInteraction } from 'discord.js'
 import { validateInputAndModifyEntryList } from '../db/functions'
@@ -26,15 +26,15 @@ export const relay: Command = {
       role: intr.options.getRole('role')?.id,
       feature: 'relay',
       add: {
-        success: `:speech_balloon: Relaying TLs for`,
+        success: `${getEmoji("speech_balloon")} Relaying TLs for`,
         failure: `
-           :warning: ${streamer} is already being relayed in this channel
+           ${getEmoji("warning")} ${streamer} is already being relayed in this channel
         `,
       },
       remove: {
-        success: `:speech_balloon: Stopped relaying TLs for`,
+        success: `${getEmoji("speech_balloon")} Stopped relaying TLs for`,
         failure: oneLine`
-          :warning: ${streamer}'s translations weren't already being relayed
+          ${getEmoji("warning")} ${streamer}'s translations weren't already being relayed
           in <#${intr.channel!.id}>. Are you in the right channel?
         `,
       },

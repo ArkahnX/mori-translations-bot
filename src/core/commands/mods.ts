@@ -1,6 +1,6 @@
 import { toggleSetting } from '../db/functions'
 import { CommandInteraction } from 'discord.js'
-import { Command } from '../../helpers/discord'
+import { Command, emoji, getEmoji } from '../../helpers/discord'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 const description = 'Toggles the relaying of mod messages serverwide.'
@@ -18,9 +18,9 @@ export const mods: Command = {
     toggleSetting({
       intr,
       setting: 'modMessages',
-      enable: `:tools: I will now relay mod messages.`,
+      enable: `${getEmoji("tools")} I will now relay mod messages.`,
       disable: `
-        :tools: I will no longer relay mod messages.
+      ${getEmoji("tools")} I will no longer relay mod messages.
         (Channel owner and other Hololive members will still be relayed.)
       `,
     })

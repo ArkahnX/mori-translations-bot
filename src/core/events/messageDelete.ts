@@ -6,7 +6,7 @@ import {
   isBlacklisted,
 } from '../db/functions'
 import { VideoId } from '../../modules/holodex/frames'
-import { createEmbed, send, ButtonRow } from '../../helpers/discord'
+import { createEmbed, send, ButtonRow, emoji, getEmoji } from '../../helpers/discord'
 import { doNothing, log } from '../../helpers'
 import { oneLine } from 'common-tags'
 import { RelayedComment } from '../db/models/RelayedComment'
@@ -40,17 +40,17 @@ function blacklistAndNotify(msg: Message, culprit: RelayedComment, vidId: VideoI
       createEmbed({
         fields: [
           {
-            name: ':no_entry: Blacklisted channel',
+            name: `${getEmoji("no_entry")} Blacklisted channel`,
             value: culprit.ytId,
             inline: true,
           },
           {
-            name: ':clown: Current name',
+            name: `${getEmoji("clown")} Current name`,
             value: culprit.author,
             inline: true,
           },
           {
-            name: ':bookmark_tabs: Reason',
+            name: `${getEmoji("bookmark_tabs")} Reason`,
             value: reason,
             inline: true,
           },

@@ -1,7 +1,7 @@
 import { ciEquals, debug, doNothing, isJp, match } from '../../helpers'
 import { DexFrame } from '../holodex/frames'
 import { Streamer, StreamerName, streamers, streamersMap } from '../../core/db/streamers'
-import { emoji } from '../../helpers/discord'
+import { emoji, getEmoji } from '../../helpers/discord'
 import { Snowflake } from 'discord.js'
 import { tl } from '../deepl'
 import { isBlacklistedOrUnwanted, isHoloID, isStreamer, isTl } from './commentBooleans'
@@ -150,6 +150,7 @@ export async function processComments(
             cameos: isCameo ? relayCameo : doNothing,
             gossip: maybeGossip ? relayGossip : doNothing,
             relay: relayTlOrStreamerComment,
+            translate: relayTl,
           })
 
           ///////////////////////////////////////////////////////////////////////////////
@@ -160,7 +161,6 @@ export async function processComments(
             mustSave_ = true
           }
           ///////////////////////////////////////////////////////////////////////////////
-
 
           return getTask({
             e,
@@ -190,25 +190,27 @@ function relayCameo(
   const cleaned = cmt.body.replaceAll('`', "'")
   const stalked = streamers.find((s) => s.ytId === cmt.id)
   const groups = stalked?.groups as string[] | undefined
-  const camEmj = groups?.includes('Nijisanji') ? emoji.niji : emoji.holo
-  const emj = isGossip ? emoji.peek : camEmj
+  const camEmj = groups?.includes('Nijisanji') ? getEmoji("niji") : getEmoji("holo")
+  const emj = isGossip ? getEmoji("peek") : camEmj
   const mustTl = deepLTl && g.deepl
   const line1 = `${emj} **${cmt.name}** in **${to}**'s chat: \`${cleaned}\``
-  const line2 = mustTl ? `\n${emoji.deepl}**DeepL:** \`${deepLTl}\`` : ''
+  const line2 = mustTl ? `\n${getEmoji("deepl")}**DeepL:** \`${deepLTl}\`` : ''
   const line3 = `\n<https://youtu.be/${frame.id}>`
   const mustPost = !isBlacklistedOrUnwanted(cmt, g, bl)
-  return mustPost ? {
-    _tag: 'SendMessageTask',
-    cid: discordCh,
-    content: line1 + line2 + line3,
-    tlRelay: false,
-    vId: frame.id,
-    g: g,
-    save: {
-      comment: cmt,
-      frame,
-    }
-  } : undefined
+  return mustPost
+    ? {
+        _tag: 'SendMessageTask',
+        cid: discordCh,
+        content: line1 + line2 + line3,
+        tlRelay: false,
+        vId: frame.id,
+        g: g,
+        save: {
+          comment: cmt,
+          frame,
+        },
+      }
+    : undefined
 }
 
 function relayGossip(data: RelayData): SendMessageTask | undefined {
@@ -233,8 +235,8 @@ function relayTlOrStreamerComment({
 
   const vauthor = streamersMap.get(cmt.id)
   const groups = vauthor?.groups as string[] | undefined
-  const vemoji = groups?.includes('Nijisanji') ? emoji.niji : emoji.holo
-  const premoji = isATl ? ':speech_balloon:' : isStreamer(cmt.id) ? vemoji : ':tools:'
+  const vemoji = groups?.includes('Nijisanji') ? getEmoji("niji") : getEmoji("holo")
+  const premoji = isATl ? getEmoji("speech_balloon") : isStreamer(cmt.id) ? vemoji : getEmoji("tools")
 
   const url =
     frame.status === 'live'
@@ -245,7 +247,43 @@ function relayTlOrStreamerComment({
 
   const author = isATl ? `||${cmt.name}:||` : `**${cmt.name}:**`
   const text = cmt.body.replaceAll('`', "''")
-  const tl = deepLTl && g.deepl ? `\n${emoji.deepl}**DeepL:** \`${deepLTl}\`` : ''
+  const tl = deepLTl && g.deepl ? `\n${getEmoji("deepl")}**DeepL:** \`${deepLTl}\`` : ''
+
+  return mustPost
+    ? {
+        _tag: 'SendMessageTask',
+        vId: frame.id,
+        g,
+        tlRelay: true,
+        cid: discordCh,
+        content: `${premoji} ${author} \`${text}\`${tl}${url}`,
+        save: {
+          comment: cmt,
+          frame,
+        },
+      }
+    : undefined
+}
+
+function relayTl({ discordCh, bl, deepLTl, cmt, g, frame }: RelayData): Task | undefined {
+  const isATl = cmt.isTl || isTl(cmt.body, g)
+  const mustPost = isATl && !isBlacklistedOrUnwanted(cmt, g, bl)
+
+  const vauthor = streamersMap.get(cmt.id)
+  const groups = vauthor?.groups as string[] | undefined
+  const vemoji = groups?.includes('Nijisanji') ? getEmoji("niji") : getEmoji("holo")
+  const premoji = isATl ? getEmoji("speech_balloon") : isStreamer(cmt.id) ? vemoji : getEmoji("tools")
+
+  const url =
+    frame.status === 'live'
+      ? ''
+      : deepLTl
+      ? `\n<https://youtu.be/${frame.id}>`
+      : ` | <https://youtu.be/${frame.id}>`
+
+  const author = isATl ? `||${cmt.name}:||` : `**${cmt.name}:**`
+  const text = cmt.body.replaceAll('`', "''")
+  const tl = deepLTl && g.deepl ? `\n${getEmoji("deepl")}**DeepL:** \`${deepLTl}\`` : ''
 
   return mustPost
     ? {

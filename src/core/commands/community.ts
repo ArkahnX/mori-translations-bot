@@ -1,4 +1,4 @@
-import { Command } from '../../helpers/discord'
+import { Command, emoji, getEmoji } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { ChatInputCommandInteraction } from 'discord.js'
 import { validateInputAndModifyEntryList } from '../db/functions'
@@ -22,16 +22,16 @@ export const community: Command = {
       role: intr.options.getRole('role')?.id,
       feature: 'community',
       add: {
-        success: `:family_mmbb: Notifying community posts by`,
+        success: `${getEmoji("family_mmbb")} Notifying community posts by`,
         failure: oneLine`
-          :warning: ${streamer}'s community posts are already being
+          ${getEmoji("warning")} ${streamer}'s community posts are already being
           relayed in this channel.
         `,
       },
       remove: {
-        success: `:family_mmbb: Stopped notifying community posts by`,
+        success: `${getEmoji("family_mmbb")} Stopped notifying community posts by`,
         failure: oneLine`
-          :warning: ${streamer}'s community posts weren't already being notified
+          ${getEmoji("warning")} ${streamer}'s community posts weren't already being notified
           in <#${intr.channel!.id}>. Are you in the right channel?
         `,
       },

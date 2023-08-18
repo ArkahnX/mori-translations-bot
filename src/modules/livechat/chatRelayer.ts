@@ -11,17 +11,16 @@ import { GuildSettings, WatchFeature, WatchFeatureSettings } from '../../core/db
 import { retryIfStillUpThenPostLog, sendAndForgetHistory } from './closeHandler'
 import { logCommentData } from './logging'
 import { frameEmitter } from '../holodex/frameEmitter'
-import { isMainThread, MessageChannel } from 'worker_threads'
-import { resolve } from 'path'
+import { isMainThread } from 'worker_threads'
 import { processComments, Task } from './chatRelayerWorker'
 import { io } from 'socket.io-client'
 import { debug, log } from '../../helpers'
 // const Piscina = require('piscina')
 
 // const piscina = new Piscina({
-  // filename: resolve(__dirname, 'chatRelayerWorker.js'),
-  // useAtomics: false,
-  // idleTimeout: 99999999,
+// filename: resolve(__dirname, 'chatRelayerWorker.js'),
+// useAtomics: false,
+// idleTimeout: 99999999,
 // })
 
 if (isMainThread)
@@ -39,13 +38,13 @@ if (isMainThread)
 const masterchats: Record<VideoId, any> = {} // Figure out why MessagePort type broken
 
 // export async function setupRelay(frame: DexFrame): Promise<void> {
-  // const { port1, port2 } = new MessageChannel()
+// const { port1, port2 } = new MessageChannel()
 
-  // masterchats[frame.id] = port2
+// masterchats[frame.id] = port2
 
-  // piscina.run({ port: port1, frame, allEntries }, { transferList: [port1] })
+// piscina.run({ port: port1, frame, allEntries }, { transferList: [port1] })
 
-  // port2.on('message', runTask)
+// port2.on('message', runTask)
 // }
 
 // TODO: ensure no race condition getting live frames on startup
@@ -184,7 +183,7 @@ async function runTask(task: Task): Promise<void> {
     const ch = findTextChannel(task.cid)
     const thread = task.tlRelay ? await findFrameThread(task.vId, task.g) : null
 
-    log(`${task.vId} | ${task.content}`);
+    log(`${task.vId} | ${task.content}`)
     // const lastMsg = ch?.lastMessage
     // const isBotLastPoster = lastMsg?.author?.id === client.user?.id
     // // // this code is ugly and duplicated but im in a hurry
@@ -220,8 +219,8 @@ async function runTask(task: Task): Promise<void> {
     // })
     // })
     // } else {
-    
-    ({ ch, thread });
+
+    ;({ ch, thread })
     // DISABLED 2022-10-12
     send(thread ?? ch, task.content).then((msg) => {
       if (task.save && msg) {

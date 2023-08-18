@@ -1,7 +1,7 @@
 import { addNotifiedLive, getNotifiedLives } from '../core/db/functions'
 import { Streamer, streamers } from '../core/db/streamers'
 import { log } from '../helpers'
-import { emoji } from '../helpers/discord'
+import { emoji, getEmoji } from '../helpers/discord'
 import { notifyDiscord, NotifyOptions } from './notify'
 import { frameEmitter } from './holodex/frameEmitter'
 import { DexFrame } from './holodex/frames'
@@ -23,7 +23,7 @@ async function notifyFrame(frame: DexFrame): Promise<void> {
       feature: 'youtube',
       streamer: streamer as Streamer,
       embedBody: `I am live on YouTube!\nhttps://youtu.be/${frame.id}`,
-      emoji: emoji.yt,
+      emoji: getEmoji("yt"),
       avatarUrl: frame.channel.photo,
       nonEmbedText: `https://youtu.be/${frame.id}`,
     })
@@ -43,7 +43,7 @@ export function getRelayNotifyProps(frame: DexFrame): NotifyOptions {
       ${frame.title}
       https://youtu.be/${frame.id}
     `,
-    emoji: emoji.holo,
+    emoji: getEmoji("holo"),
     videoId: frame.id,
     avatarUrl: frame.channel.photo,
     credits: true,

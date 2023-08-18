@@ -1,4 +1,4 @@
-import { Command, createEmbedMessage, reply } from '../../helpers/discord'
+import { Command, createEmbedMessage, emoji, getEmoji, reply } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { getSettings, updateSettings, removeBlacklisted } from '../db/functions'
 import { ChatInputCommandInteraction } from 'discord.js'
@@ -34,10 +34,10 @@ function unblacklistLastItem(intr: ChatInputCommandInteraction): void {
   const lastBlacklisted = last(blacklist)
   const replyContent = lastBlacklisted
     ? oneLine`
-      :white_check_mark: Successfully unblacklisted channel
+    ${getEmoji("white_check_mark")} Successfully unblacklisted channel
       ${lastBlacklisted.ytId} (${lastBlacklisted.name}).
     `
-    : ':warning: No items in blacklist.'
+    : `${getEmoji("warning")} No items in blacklist.`
 
   reply(intr, createEmbedMessage(replyContent))
   if (lastBlacklisted) updateSettings(intr, { blacklist: init(blacklist) })
@@ -49,8 +49,8 @@ function unblacklistItem(intr: ChatInputCommandInteraction, ytId: string): void 
     intr,
     createEmbedMessage(
       success
-        ? `:white_check_mark: Successfully unblacklisted ${ytId}.`
-        : `:warning: YouTube channel ID ${ytId} was not found.`,
+        ? `${getEmoji("white_check_mark")} Successfully unblacklisted ${ytId}.`
+        : `${getEmoji("warning")} YouTube channel ID ${ytId} was not found.`,
     ),
   )
 }

@@ -4,7 +4,7 @@ import { client } from '../../core'
 import { getAllSettings } from '../../core/db/functions'
 import { GuildSettings, WatchFeatureSettings } from '../../core/db/models'
 import { StreamerName, streamers } from '../../core/db/streamers'
-import { createEmbed, send } from '../../helpers/discord'
+import { createEmbed, emoji, getEmoji, send } from '../../helpers/discord'
 import { communityEmitter } from './communityEmitter'
 import { CommunityPost } from './getLatestPost'
 import { isMainThread } from 'worker_threads'
@@ -22,7 +22,7 @@ function notifyPost(post: CommunityPost): void {
     const ch = <TextChannel>guild?.channels.cache.find((ch) => ch.id == discordCh)
     send(ch, {
       content: oneLine`
-        :loudspeaker: ${roleToNotify ? '<@&' + roleToNotify + '>' : ''}
+      ${getEmoji("loudspeaker")} ${roleToNotify ? '<@&' + roleToNotify + '>' : ''}
         ${streamer} just published a community post!\n
         ${post.url}
       `,

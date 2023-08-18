@@ -1,6 +1,6 @@
 import { toggleSetting } from '../db/functions'
 import { CommandInteraction } from 'discord.js'
-import { Command, emoji } from '../../helpers/discord'
+import { Command, emoji, getEmoji } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
@@ -21,10 +21,10 @@ export const deepl: Command = {
       intr,
       setting: 'deepl',
       enable: `
-        ${emoji.deepl} I will now translate Vtubers' messages with DeepL.
+        ${getEmoji("deepl")} I will now translate Vtubers' messages with DeepL.
       `,
       disable: oneLine`
-        ${emoji.deepl} I will no longer translate Vtubers' messages
+        ${getEmoji("deepl")} I will no longer translate Vtubers' messages
         with DeepL.
       `,
     })
