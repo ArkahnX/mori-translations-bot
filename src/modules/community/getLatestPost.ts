@@ -1,11 +1,20 @@
-import { getText } from '../../helpers'
+import { getText, warn } from '../../helpers'
+
+function findInitialData(data: string) {
+	const match =
+		/(?:window\s*\[\s*["']ytInitialData["']\s*\]|ytInitialData)\s*=\s*({.+?})\s*;\s*(?:var\s+(?:meta|head)|<\/script|\n)/.exec(data);
+	if (!match) {
+		warn(`No match found for "findInitialData"`);
+		return {};
+	}
+	return JSON.parse(match[1]);
+}
 
 export async function getLatestPost(channelId: string): Promise<CommunityPost | undefined> {
   const channelUrl = `https://www.youtube.com/channel/${channelId}/community`
   const headers = { 'Accept-Language': 'en' }
   const page = await getText(channelUrl, { headers })
-  const dataRegex = /(?<=var ytInitialData = )(.*?)(?=;<\/script>)/
-  const data = JSON.parse(page.match(dataRegex)?.[0] ?? '')
+  const data = findInitialData(page);
 
   return extractYtData(data, channelId)
 }
