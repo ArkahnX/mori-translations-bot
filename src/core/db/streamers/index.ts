@@ -7,8 +7,9 @@ import { ValidatedOptions } from '../functions'
 import { hololive } from './hololive'
 import { indies } from './indies'
 import { nijisanji } from './nijisanji'
+import { idol } from './idol'
 
-export const streamers = StreamerArray([...hololive, ...nijisanji, ...indies] as const)
+export const streamers = StreamerArray([...hololive, ...nijisanji, ...idol, ...indies] as const)
 
 export const streamersMap: Map<YouTubeChannelId, Streamer> = new Map(
   streamers.map((s) => [s.ytId, s]),
@@ -18,26 +19,26 @@ export const streamersYtIdSet: Set<YouTubeChannelId> = new Set(streamers.map((s)
 
 export const names = streamers.map((x) => x.name)
 export const twitters = streamers.map((x) => x.twitter)
-export type StreamerName = typeof names[number] | 'all'
-export type StreamerTwitter = typeof twitters[number]
+export type StreamerName = (typeof names)[number] | 'all'
+export type StreamerTwitter = (typeof twitters)[number]
 
 export function getStreamerList(): string {
-  const groups: Map<string, Set<string>> = new Map();
-  for(const streamer of streamers) {
-    const group = streamer.groups[0];
-    if(groups.has(group) === false) {
-      groups.set(group,new Set());
+  const groups: Map<string, Set<string>> = new Map()
+  for (const streamer of streamers) {
+    const group = streamer.groups[0]
+    if (groups.has(group) === false) {
+      groups.set(group, new Set())
     }
-    const talents = groups.get(group) as Set<string>;
+    const talents = groups.get(group) as Set<string>
     talents.add(streamer.name)
   }
-  const result = [];
-  for(const [group, talents] of groups.entries()) {
-    result.push(`${bold(group)}: ${Array.from(talents.values()).sort().join(", ")}`)
+  const result = []
+  for (const [group, talents] of groups.entries()) {
+    result.push(`${bold(group)}: ${Array.from(talents.values()).sort().join(', ')}`)
   }
-  result.sort();
+  result.sort()
   // return streamers.map((streamer) => streamer.name).join(', ')
-  return result.join("\n");
+  return result.join('\n')
 }
 
 export function findStreamerName(name: string): StreamerName | undefined {

@@ -53,8 +53,12 @@ function isFreeChat(frame: DexFrame): boolean {
     'UCa9Y57gfeY0Zro_noHRVrnw',
   ]
   const isException = exceptions.some((ch) => ch === frame.channel.id)
-  const isFreeChat = ['freechat', 'free chat', 'freeechat', 'フリーチャット'].some((pattern) =>
+  let isFreeChat = ['freechat', 'free chat', 'freeechat', 'フリーチャット'].some((pattern) =>
     frame.title.toLowerCase().includes(pattern),
   )
+  // if the frame is longer than a week away let's opt to not watch it
+  if (new Date(frame.start_scheduled).getTime() > Date.now() + 6.048e8) {
+    isFreeChat = true;
+  }
   return isFreeChat && !isException && frame.status !== 'live'
 }

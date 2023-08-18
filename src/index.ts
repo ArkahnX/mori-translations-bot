@@ -16,7 +16,8 @@ mongoose.connect(MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-})
+}).
+catch(error => console.error(error));
 
 process.on('uncaughtException', function (err) {
   debug('Uncaught exception: ' + err)

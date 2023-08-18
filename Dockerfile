@@ -12,5 +12,6 @@ RUN npm ci
 COPY ./src ./src
 COPY tsconfig.json ./
 RUN npm run tsc
+RUN npm run register
 
 CMD ["node", "./build/index.js"]

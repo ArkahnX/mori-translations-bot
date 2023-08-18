@@ -13,7 +13,6 @@ import {
   ThreadChannel,
   CommandInteraction,
   GuildMemberRoleManager,
-  Permissions,
 } from 'discord.js'
 import { client } from '../../core'
 
@@ -61,7 +60,7 @@ export function getUserId(subject: CommandInteraction | GuildMember): Snowflake 
 }
 
 export function hasKickPerms(subject: CommandInteraction | GuildMember): boolean {
-  const author = subject instanceof CommandInteraction ? subject.member as GuildMember : subject
+  const author = subject instanceof CommandInteraction ? (subject.member as GuildMember) : subject
 
   return <boolean>(author?.permissions).has('KickMembers')
 }
@@ -89,12 +88,17 @@ export function validateRole(g: Guild, role: string | undefined): Snowflake | un
   return g.roles.cache.get(role?.replace(/[<@&>]/g, '') as any)?.id
 }
 
-export function canBot(perm: PermissionResolvable, channel?: TextBasedChannel | ThreadChannel | null): boolean {
+export function canBot(
+  perm: PermissionResolvable,
+  channel?: TextBasedChannel | ThreadChannel | null,
+): boolean {
   const unsupported = [DMChannel]
   const isSupported = unsupported.every((type) => !(channel instanceof type))
   const validated = <TextChannel | ThreadChannel | NewsChannel | undefined>channel
   return (
-    isSupported && !!validated?.guild?.members.me && validated.permissionsFor(validated.guild.members.me!).has(perm)
+    isSupported &&
+    !!validated?.guild?.members.me &&
+    validated.permissionsFor(validated.guild.members.me!).has(perm)
   )
 }
 

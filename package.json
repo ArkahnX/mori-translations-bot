@@ -5,6 +5,8 @@
   "main": "build/index.js",
   "scripts": {
     "tsc": "tsc",
+    "start": "node ./build/index.js",
+    "register": "node ./build/core/registerSlashCommands.js",
     "typedoc": "typedoc"
   },
   "engines": {
