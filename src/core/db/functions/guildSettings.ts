@@ -28,9 +28,9 @@ export function getSettings(
 }
 
 export function getAllSettings(): GuildSettings[] {
-  debug('getting all settings')
+  // debug('getting all settings')
   const result = client.guilds.cache.map(getGuildSettings)
-  debug('done getting all settinlgs')
+  // debug('done getting all settings')
   return result
 }
 
@@ -122,6 +122,7 @@ function getGuildSettings(g: Guild | Snowflake): GuildSettings {
     gossip: [],
     modMessages: true,
     relay: [],
+    translate: [],
     threads: false,
     youtube: [],
   }

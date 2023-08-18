@@ -68,6 +68,9 @@ export class GuildSettings {
   @prop({ type: () => WatchFeatureSettings, default: [] })
   public relay: WatchFeatureSettings[]
 
+  @prop({ type: () => WatchFeatureSettings, default: [] })
+  public translate: WatchFeatureSettings[]
+
   @prop({ default: false })
   public threads: boolean
 
@@ -79,6 +82,6 @@ export const GuildSettingsDb = getModelForClass(GuildSettings)
 
 export type RoleSetting = 'admins' | 'blacklisters'
 
-export type WatchFeature = 'community' | 'gossip' | 'cameos' | 'relay' | 'youtube'
+export type WatchFeature = 'community' | 'gossip' | 'cameos' | 'relay' | 'youtube' | 'translate'
 
 export type SettingToggle = 'deepl' | 'modMessages' | 'threads'
