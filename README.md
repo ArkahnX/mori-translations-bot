@@ -14,5 +14,5 @@ The code is messy, but its being fixed, slowly.
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/1331748/128500085-9126b768-8dc8-42d2-96e2-1c8e25b5b9c9.png)
-![image](https://user-images.githubusercontent.com/1331748/128500129-b3d9de63-489b-463f-8a78-2b4e1093e8e3.png)
+![image](https://media.discordapp.net/attachments/841692109413023787/1150346611889807360/image.png)
+![image](https://media.discordapp.net/attachments/841692109413023787/1150346309082034206/image.png)
