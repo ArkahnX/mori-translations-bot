@@ -8,7 +8,7 @@ import { loadAllEmoji } from '../../helpers/discord'
 
 export async function ready() {
   log(`${client.user!.tag} serving ${client.guilds.cache.size} servers.`)
-  client.user!.setActivity(`DAILY MAINTENANCES (DEBUGGING)`, { type: ActivityType.Playing })
+  client.user!.setActivity(`Streaming Translations right to your doorstep`, { type: ActivityType.Playing })
   if (isMainThread) {
     loadAllEmoji(client);
     debug('community notifier...')
