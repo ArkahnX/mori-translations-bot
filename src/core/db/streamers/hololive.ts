@@ -595,7 +595,7 @@ export const hololive = [
     chName: 'IRyS Ch. hololive-EN',
     picture:
       'https://yt3.ggpht.com/UwxlX1PuB_RwJyEUW_ofbBR6saY8n5_p8A9_1bY65zygFrfqIb1GM8dIK33EJboDDnRVyw=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Hope'],
+    groups: ['English Promise'],
     twitter: 'irys_en',
     aliases: ['irys'],
   },
@@ -605,19 +605,9 @@ export const hololive = [
     chName: 'Hakos Baelz Ch. hololive-EN',
     picture:
       'https://yt3.ggpht.com/GWIwRbtVQ2TAlvH8Mf37FMpemTrwmUSbTSazp9Aul6KwdKQmvx7IbLZepDk0sp8ReW3qBhsU=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Council'],
+    groups: ['English Promise'],
     twitter: 'hakosbaelz',
     aliases: ['baelz', 'hakos'],
-  },
-  {
-    name: 'Tsukumo Sana',
-    ytId: 'UCsUj0dszADCGbF3gNrQEuSQ',
-    chName: 'Tsukumo Sana Ch. hololive-EN',
-    picture:
-      'https://yt3.ggpht.com/d7xnzbFVWHHMrxORQ6w5U6hwtg_NWB2rT6CMZWsQvILip_IH8ukeNkqj9FNmvYm7XfcdyZcLgxA=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Council'],
-    twitter: 'tsukumosana',
-    aliases: ['sana'],
   },
   {
     name: 'Nanashi Mumei',
@@ -625,7 +615,7 @@ export const hololive = [
     chName: 'Nanashi Mumei Ch. hololive-EN',
     picture:
       'https://yt3.ggpht.com/MI8E8Wfmc_ngNZXUwu8ad0D-OtqDhmqGVULEu25z-ccscwzJpAw-7ewFXzZYLK2jHB9d5OgQDq4=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Council'],
+    groups: ['English Promise'],
     twitter: 'nanashimumei_en',
     aliases: ['nanashi', 'mumei'],
   },
@@ -635,7 +625,7 @@ export const hololive = [
     chName: 'Ouro Kronii Ch. hololive-EN',
     picture:
       'https://yt3.ggpht.com/6670YE31bbAtAi7m_UL-KWZBdL5wvmfHlLtcS4HxsBZBQNqmAk7Y-iiIOjawO_0HYXpS4HfC=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Council'],
+    groups: ['English Promise'],
     twitter: 'ourokronii',
     aliases: ['kronii'],
   },
@@ -645,7 +635,7 @@ export const hololive = [
     chName: 'Ceres Fauna Ch. hololive-EN',
     picture:
       'https://yt3.ggpht.com/0lkccaVapSr1Z3uuXWbnaQxeqRWr9Tcs4R9rLBRSrAsN9gLacpiT2OFWfFKr4NhF97_hqK3eTg=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Council'],
+    groups: ['English Promise'],
     twitter: 'ceresfauna',
     aliases: ['fauna'],
   },
@@ -736,15 +726,6 @@ export const hololive = [
     aliases: ['Regis'],
   },
   {
-    name: 'Magni Dezmond',
-    ytId: 'UC7MMNHR-kf9EN1rXiesMTMw',
-    chName: 'Magni Dezmond Ch. HOLOSTARS-EN',
-    picture: 'dont put anything here',
-    groups: ['Holostars Tempus'],
-    twitter: 'magnidezmond',
-    aliases: ['Magni'],
-  },
-  {
     name: 'Axel Syrios',
     ytId: 'UC2hx0xVkMoHGWijwr_lA01w',
     chName: 'Axel Syrios Ch. HOLOSTARS-EN',
@@ -752,15 +733,6 @@ export const hololive = [
     groups: ['Holostars Tempus'],
     twitter: 'axelsyrios',
     aliases: ['Axel'],
-  },
-  {
-    name: 'Noir Vesper',
-    ytId: 'UCDRWSO281bIHYVi-OV3iFYA',
-    chName: 'Noir Vesper Ch. HOLOSTARS-EN',
-    picture: 'dont put anything here',
-    groups: ['Holostars Tempus'],
-    twitter: 'noirvesper_en',
-    aliases: ['Noir'],
   },
   // uproar
   {
