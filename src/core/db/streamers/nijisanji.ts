@@ -70,16 +70,6 @@ export const nijisanji = [
     aliases: ['Hada'],
   },
   {
-    name: 'Nina Kosaka',
-    ytId: 'UCkieJGn3pgJikVW8gmMXE2w',
-    chName: 'Nina Kosaka【NIJISANJI EN】',
-    picture:
-      'https://yt3.ggpht.com/-JRODQIYAdJjCTGJrqJtyypBPMmkegGUMle_V3o2uF6OSbBWWVLvPnPCnJDXwI-7AilZUFhoqg=s88-c-k-c0x00ffffff-no-rj',
-    groups: [  'Nijisanji EN 3rd wave'],
-    twitter: 'NinaKosaka',
-    aliases: ['Nina'],
-  },
-  {
     name: 'Millie Parfait',
     ytId: 'UC47rNmkDcNgbOcM-2BwzJTQ',
     chName: 'Millie Parfait【NIJISANJI EN】',
@@ -148,15 +138,6 @@ export const nijisanji = [
     aliases: ['Ike'],
   },
   {
-    name: 'Mysta Rias',
-    ytId: 'UCIM92Ok_spNKLVB5TsgwseQ',
-    chName: 'Mysta Rias 【NIJISANJI EN】',
-    picture: 'dont put anything here',
-    groups: [  'Nijisanji Luxiem'],
-    twitter: 'Mysta_Rias',
-    aliases: ['Mysta'],
-  },
-  {
     name: 'Vox Akuma',
     ytId: 'UCckdfYDGrjojJM28n5SHYrA',
     chName: 'Vox Akuma【NIJISANJI EN】',
@@ -201,15 +182,6 @@ export const nijisanji = [
     groups: [  'Nijisanji Noctyx'],
     twitter: 'Fulgur_Ovid',
     aliases: ['Fulgur'],
-  },
-  {
-    name: 'Yugo Asuma',
-    ytId: 'UCSc_KzY_9WYAx9LghggjVRA',
-    chName: 'Yugo Asuma 【NIJISANJI EN】',
-    picture: 'dont put anything here',
-    groups: [  'Nijisanji Noctyx'],
-    twitter: 'Yugo_Asuma',
-    aliases: ['Yugo'],
   },
   {
     name: 'Maria Marionette',
@@ -266,15 +238,6 @@ export const nijisanji = [
     aliases: ['Ren'],
   },
   // XSOLEIL
-  {
-    name: 'Zaion LanZa',
-    ytId: 'UCIairB9UMDvqSKfMdv1jmjg',
-    chName: 'Zaion LanZa【NIJISANJI EN】',
-    picture: 'dont put anything here',
-    groups: [  'Nijisanji XSOLEIL'],
-    twitter: 'ZaionLanZa',
-    aliases: ['Zaion'],
-  },
   {
     name: 'Doppio Dropscythe',
     ytId: 'UCy91xBlY_Brh3bnHxKtjrrg',
