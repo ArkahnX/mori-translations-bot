@@ -6,7 +6,7 @@ import { isMainThread } from 'worker_threads'
 import { ActivityType } from 'discord.js'
 import { loadAllEmoji } from '../../helpers/discord'
 
-export async function ready() {
+export async function clientReady() {
   log(`${client.user!.tag} serving ${client.guilds.cache.size} servers.`)
   client.user!.setActivity(`Streaming Translations right to your doorstep`, { type: ActivityType.Playing })
   if (isMainThread) {
