@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18.19
 
 # install build deps
 RUN apk add python3 py3-pip build-base

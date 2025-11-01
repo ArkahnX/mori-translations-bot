@@ -8,5 +8,6 @@ declare namespace NodeJS {
     MONGODB_URL: string
     DISCORD_ERROR_CHANNEL_ID?: string
     DISCORD_ERROR_ROLE_ID?: string
+    DISCORD_HONEYPOT_CHANNEL_ID?: string
   }
 }
