@@ -1,11 +1,12 @@
 import { readdirSync } from 'fs'
+import { log } from '../../helpers'
 import {
+  ChatInputCommandInteraction,
   ContextMenuCommandBuilder,
   SlashCommandBuilder,
+  SlashCommandOptionsOnlyBuilder,
   SlashCommandSubcommandsOnlyBuilder,
-} from '@discordjs/builders'
-import { log } from '../../helpers'
-import { ChatInputCommandInteraction } from 'discord.js'
+} from 'discord.js'
 import { Map as ImmutableMap } from 'immutable'
 import path from 'path'
 import { isNotNil } from '../language'
@@ -40,6 +41,7 @@ export interface Command {
   slash:
     | SlashCommandBuilder
     | SlashCommandSubcommandsOnlyBuilder
+    | SlashCommandOptionsOnlyBuilder
     | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
     | ContextMenuCommandBuilder
   callback: (intr: ChatInputCommandInteraction) => void | Promise<void>

@@ -1,9 +1,8 @@
 import { Command, createEmbedMessage, emoji, getEmoji, reply } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { getSettings, updateSettings, removeBlacklisted } from '../db/functions'
-import { ChatInputCommandInteraction } from 'discord.js'
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import { init, last, isNil } from 'ramda'
-import { SlashCommandBuilder } from '@discordjs/builders'
 
 const description =
   'Unblacklists the specified channel ID.  If none specified, unblacklists last item.'

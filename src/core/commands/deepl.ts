@@ -1,8 +1,7 @@
 import { toggleSetting } from '../db/functions'
-import { CommandInteraction } from 'discord.js'
+import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
 import { Command, emoji, getEmoji } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
-import { SlashCommandBuilder } from '@discordjs/builders'
 
 const description =
   "Toggles automatic DeepL translation for Hololive members' chat messages. (Also affects /cameos)"

@@ -1,10 +1,9 @@
 import { Command, createEmbed, createEmbedMessage, emoji, getEmoji, reply } from '../../helpers/discord'
 import { oneLine } from 'common-tags'
 import { getFlatGuildRelayHistory, addBlacklisted, getSettings } from '../db/functions'
-import { CommandInteraction, ContextMenuCommandInteraction } from 'discord.js'
+import { CommandInteraction, ContextMenuCommandInteraction, ContextMenuCommandBuilder } from 'discord.js'
 import { isBlacklisted } from '../../modules/livechat/commentBooleans'
 import { RelayedComment } from '../db/models/RelayedComment'
-import { ContextMenuCommandBuilder } from '@discordjs/builders'
 
 export const blacklist: Command = {
   config: {

@@ -147,7 +147,7 @@ export async function clearOldData(): Promise<void> {
   const isRecentV = (v: Snowflake) => snowflakeToUnix(v) - now < WEEK
 
   client.guilds.cache.forEach(async (g) => {
-    debug('clearing for guild '+ g.id)
+    debug('clearing for guild '+ g.id + ' (' + g.name + ')')
     const guildData = await getGuildData(g)
     const newRelayNotices = filter(guildData.relayNotices, isRecentV)
     const newBlacklistNotices = filter(guildData.blacklistNotices, isRecentK)

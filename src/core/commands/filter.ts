@@ -1,9 +1,8 @@
 import { Command, createEmbed, reply } from '../../helpers/discord'
 import { getSettings, updateSettings } from '../db/functions'
-import { ChatInputCommandInteraction } from 'discord.js'
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import { oneLine } from 'common-tags'
 import { GuildSettings } from '../db/models'
-import { SlashCommandBuilder } from '@discordjs/builders'
 
 const description = 'Manage custom-banned strings and custom-desired strings.'
 

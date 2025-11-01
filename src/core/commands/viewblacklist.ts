@@ -1,7 +1,6 @@
 import { Command, createEmbed, createTxtEmbed, reply } from '../../helpers/discord'
 import { getSettings } from '../db/functions'
-import { CommandInteraction } from 'discord.js'
-import { SlashCommandBuilder } from '@discordjs/builders'
+import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
 
 const description = 'Shows blacklist'
 

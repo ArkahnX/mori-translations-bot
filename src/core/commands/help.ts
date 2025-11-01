@@ -1,6 +1,6 @@
 import { commands } from '../lunaBotClient'
 import { getPermLevel, getSettings } from '../db/functions'
-import { ChatInputCommandInteraction, EmbedField, GuildMember, inlineCode } from 'discord.js'
+import { ChatInputCommandInteraction, EmbedField, GuildMember, inlineCode, SlashCommandBuilder } from 'discord.js'
 import { Map, Set } from 'immutable'
 import { GuildSettings, WatchFeatureSettings, WatchFeature } from '../db/models'
 import { head, isEmpty } from 'ramda'
@@ -8,7 +8,6 @@ import { Command, createEmbed, emoji, getEmoji, reply } from '../../helpers/disc
 import { toTitleCase } from '../../helpers/language'
 import { stripIndents } from 'common-tags'
 import { config } from '../../config'
-import { SlashCommandBuilder } from '@discordjs/builders'
 
 const description =
   'Displays available commands for your permission level in the requested category.'

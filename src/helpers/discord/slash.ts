@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, SlashCommandStringOption } from '@discordjs/builders'
+import { SlashCommandBuilder, SlashCommandStringOption } from 'discord.js'
 // import { streamers } from '../../core/db/streamers'
 
 interface RoleListCommand {

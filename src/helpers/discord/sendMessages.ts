@@ -15,6 +15,8 @@ import {
   CommandInteraction,
   ThreadChannel,
   ContextMenuCommandInteraction,
+  TextChannel,
+  DMChannel,
 } from 'discord.js'
 import { debug, warn } from '../logging'
 import { canBot } from './general'
@@ -51,7 +53,7 @@ export async function reply(
 }
 
 export async function send(
-  channel: TextBasedChannel | ThreadChannel | undefined,
+  channel: TextChannel | ThreadChannel | DMChannel | undefined,
   content: string | MessageCreateOptions | MessagePayload,
 ): Promise<Message | undefined> {
   debug('checking perms..')

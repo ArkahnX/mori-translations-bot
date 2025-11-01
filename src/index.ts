@@ -24,7 +24,7 @@ process.on('uncaughtException', function (err) {
   client.guilds.cache.find((g) => g.id === '')
   if (process.env.DISCORD_ERROR_CHANNEL_ID) {
     const ch = client.channels.cache.get(process.env.DISCORD_ERROR_CHANNEL_ID)
-    if(ch && ch.isTextBased()) {
+    if(ch && ch.isSendable()) {
       if (process.env.DISCORD_ERROR_ROLE_ID) {
         ch.send(`${roleMention(process.env.DISCORD_ERROR_ROLE_ID)} UNCAUGHT EXCEPTION: ${codeBlock(JSON.stringify(err))}`)
       } else {

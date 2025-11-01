@@ -1,7 +1,6 @@
 import { toggleSetting } from '../db/functions'
-import { CommandInteraction } from 'discord.js'
+import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
 import { Command, emoji, getEmoji } from '../../helpers/discord'
-import { SlashCommandBuilder } from '@discordjs/builders'
 
 const description = 'Toggles the relaying of mod messages serverwide.'
 
