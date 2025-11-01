@@ -980,6 +980,15 @@ export const hololive = [
     aliases: [],
   },
   {
+    name: 'holoAN room (ホロアナ)',
+    ytId: 'UCozx5csNhCx1wsVq3SZVkBQ',
+    chName: 'holoAN room (ホロアナ)',
+    picture: 'dont put anything here',
+    groups: ['Hololive official'],
+    twitter: 'hololivetv',
+    aliases: [],
+  },
+  {
     name: 'Isaki Riona',
     ytId: 'UC9LSiN9hXI55svYEBrrK-tw',
     chName: 'Riona Ch. 響咲リオナ - FLOW GLOW',
