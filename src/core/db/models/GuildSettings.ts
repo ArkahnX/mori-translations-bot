@@ -56,6 +56,9 @@ export class GuildSettings {
   @prop({ default: true })
   public deepl: boolean
 
+  @prop({ default: false })
+  public honeypot: boolean
+
   @prop({ type: () => String })
   public logChannel?: Snowflake
 
@@ -84,4 +87,4 @@ export type RoleSetting = 'admins' | 'blacklisters'
 
 export type WatchFeature = 'community' | 'gossip' | 'cameos' | 'relay' | 'youtube' | 'translate'
 
-export type SettingToggle = 'deepl' | 'modMessages' | 'threads'
+export type SettingToggle = 'deepl' | 'modMessages' | 'threads' | 'honeypot'

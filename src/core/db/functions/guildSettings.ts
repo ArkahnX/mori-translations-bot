@@ -118,6 +118,7 @@ function getGuildSettings(g: Guild | Snowflake): GuildSettings {
     customWantedPatterns: [],
     customBannedPatterns: [],
     deepl: true,
+    honeypot: false,
     logChannel: undefined,
     gossip: [],
     modMessages: true,
