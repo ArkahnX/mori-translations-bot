@@ -6,7 +6,7 @@ import { Map } from 'immutable'
 export const commands: Map<string, Command> = isMainThread ? loadAllCommands() : Map()
 
 export const client = new Client({
-  intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildMessages],
+  intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
   rest: {
     retries: 5,
     timeout: 30000,
