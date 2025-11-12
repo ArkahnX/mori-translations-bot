@@ -9,5 +9,6 @@ declare namespace NodeJS {
     DISCORD_ERROR_CHANNEL_ID?: string
     DISCORD_ERROR_ROLE_ID?: string
     DISCORD_HONEYPOT_CHANNEL_ID?: string
+    DISCORD_HONEYPOT_LOG_CHANNEL_ID?: string
   }
 }
