@@ -39,16 +39,6 @@ export const hololive = [
     aliases: ['peko', 'ペコ', 'ぺこ'],
   },
   {
-    name: 'Minato Aqua',
-    ytId: 'UC1opHUrw8rvnsadT-iGp7Cg',
-    chName: 'Aqua Ch. 湊あくあ',
-    picture:
-      'https://yt3.ggpht.com/ytc/AAUvwngPGs1t6iJAT6hLWj7cBQcvJg2y_L9mzpy3lpxgqw=s800-c-k-c0x00ffffff-no-rj',
-    groups: ['Hololive 2nd Gen'],
-    twitter: 'minatoaqua',
-    aliases: ['aqua', 'baqua', 'akutan', 'あくあ', 'あくたん'],
-  },
-  {
     name: 'Yuzuki Choco',
     ytId: 'UC1suqwovbL1kzsoaZgFZLKg',
     chName: 'Choco Ch. 癒月ちょこ',
@@ -167,16 +157,6 @@ export const hololive = [
     groups: ['Hololive 3rd Gen'],
     twitter: 'houshoumarine',
     aliases: ['marine', '船長', 'senchou', 'sentyo', 'mari-tan', 'maripi'],
-  },
-  {
-    name: 'Yozora Mel',
-    ytId: 'UCD8HOxPs4Xvsm8H0ZxXGiBw',
-    chName: 'Mel Channel 夜空メルチャンネル',
-    picture:
-      'https://yt3.ggpht.com/ytc/AAUvwnj5J44v4_Ua9qGrh_n8IR0Dp-r2yj0Nl0mv4lkR=s800-c-k-c0x00ffffff-no-rj',
-    groups: ['Hololive 1st Gen'],
-    twitter: 'yozoramel',
-    aliases: ['mel', 'メル'],
   },
   {
     name: 'Shirakami Fubuki',
@@ -339,27 +319,6 @@ export const hololive = [
     aliases: ['aruran'],
   },
   {
-    name: 'Uruha Rushia',
-    ytId: 'UCl_gCybOJRIgOXw6Qb4qJzQ',
-    chName: 'Rushia Ch. 潤羽るしあ',
-    picture:
-      'https://yt3.ggpht.com/ytc/AAUvwngKVHYXNDzaEG9KIXm9lK0nBxHkA-NxlE88dLtl=s800-c-k-c0x00ffffff-no-rj',
-    groups: ['Hololive 3rd Gen'],
-    twitter: 'uruharushia',
-    aliases: [
-      'rushia',
-      'るしあ',
-      'るーちゃん',
-      'るしゃ',
-      'ルシファア',
-      'ルシファー',
-      'ru-chan',
-      'ruchan',
-      'rushifer',
-      'rusha',
-    ],
-  },
-  {
     name: 'Mori Calliope',
     ytId: 'UCL_qhgtOy0dy1Agp8vkySQg',
     chName: 'Mori Calliope Ch. hololive-EN',
@@ -388,16 +347,6 @@ export const hololive = [
     groups: ['Holostars 2nd Gen'],
     twitter: 'astelleda',
     aliases: ['astel', 'アステル'],
-  },
-  {
-    name: 'Gawr Gura',
-    ytId: 'UCoSrY_IQQVpmIRZ9Xf-y93g',
-    chName: 'Gawr Gura Ch. hololive-EN',
-    picture:
-      'https://yt3.ggpht.com/ytc/AAUvwnhSSaF3Q-PyyTSis4EH6Cu8FZ32LNvkxI9Gl_rn=s800-c-k-c0x00ffffff-no-rj',
-    groups: ['English Myth'],
-    twitter: 'gawrgura',
-    aliases: ['gura'],
   },
   {
     name: 'Hololive English',
@@ -470,16 +419,6 @@ export const hololive = [
     aliases: ['watame', 'わため'],
   },
   {
-    name: 'Kiryu Coco',
-    ytId: 'UCS9uQI-jC3DE0L4IpXyvr6w',
-    chName: 'Coco Ch. 桐生ココ',
-    picture:
-      'https://yt3.ggpht.com/ytc/AAUvwniAjGmotDDxZK7psIMoRbqhY7Ici621OQrO7fB9Wg=s800-c-k-c0x00ffffff-no-rj',
-    groups: ['Hololive 4th Gen'],
-    twitter: 'kiryucoco',
-    aliases: ['coco', 'ココ', '会長', 'kaichou'],
-  },
-  {
     name: 'Shishiro Botan',
     ytId: 'UCUKD-uaobj9jiqB-VXt71mA',
     chName: 'Botan Ch.獅白ぼたん',
@@ -538,16 +477,6 @@ export const hololive = [
     groups: ['Hololive 0th Gen'],
     twitter: 'holostarstv',
     aliases: [],
-  },
-  {
-    name: 'Murasaki Shion',
-    ytId: 'UCXTpFs_3PqI41qX2d9tL2Rw',
-    chName: 'Shion Ch. 紫咲シオン',
-    picture:
-      'https://yt3.ggpht.com/ytc/AAUvwni5CHNTkw8RlOj-78oqDbWS6sEdH4VQR_c06B6s6Q=s800-c-k-c0x00ffffff-no-rj',
-    groups: ['Hololive 2nd Gen'],
-    twitter: 'murasakishionch',
-    aliases: ['shion', 'シオン', 'kusogaki', 'クソガキ'],
   },
   {
     name: 'Watson Amelia',
@@ -610,16 +539,6 @@ export const hololive = [
     aliases: ['baelz', 'hakos'],
   },
   {
-    name: 'Nanashi Mumei',
-    ytId: 'UC3n5uGu18FoCy23ggWWp8tA',
-    chName: 'Nanashi Mumei Ch. hololive-EN',
-    picture:
-      'https://yt3.ggpht.com/MI8E8Wfmc_ngNZXUwu8ad0D-OtqDhmqGVULEu25z-ccscwzJpAw-7ewFXzZYLK2jHB9d5OgQDq4=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Promise'],
-    twitter: 'nanashimumei_en',
-    aliases: ['nanashi', 'mumei'],
-  },
-  {
     name: 'Ouro Kronii',
     ytId: 'UCmbs8T6MWqUHP1tIQvSgKrg',
     chName: 'Ouro Kronii Ch. hololive-EN',
@@ -628,16 +547,6 @@ export const hololive = [
     groups: ['English Promise'],
     twitter: 'ourokronii',
     aliases: ['kronii'],
-  },
-  {
-    name: 'Ceres Fauna',
-    ytId: 'UCO_aKKYxn4tvrqPjcTzZ6EQ',
-    chName: 'Ceres Fauna Ch. hololive-EN',
-    picture:
-      'https://yt3.ggpht.com/0lkccaVapSr1Z3uuXWbnaQxeqRWr9Tcs4R9rLBRSrAsN9gLacpiT2OFWfFKr4NhF97_hqK3eTg=s88-c-k-c0x00ffffff-no-rj',
-    groups: ['English Promise'],
-    twitter: 'ceresfauna',
-    aliases: ['fauna'],
   },
   {
     name: 'Laplus Darkness',
@@ -752,15 +661,6 @@ export const hololive = [
     groups: ['Holostars Uproar'],
     twitter: 'utsugiuyu',
     aliases: ['uyu'],
-  },
-  {
-    name: 'Hizaki Gamma',
-    ytId: 'UCkT1u65YS49ca_LsFwcTakw',
-    chName: 'Gamma Ch. 緋崎ガンマ - UPROAR!! -',
-    picture: 'dont put anything here',
-    groups: ['Holostars Uproar'],
-    twitter: 'hizakigamma',
-    aliases: ['gamma'],
   },
   {
     name: 'Minase Rio',
@@ -915,15 +815,6 @@ export const hololive = [
     groups: ['DEV_IS: ReGLOSS'],
     twitter: 'ichijouririka',
     aliases: ['Ichijou','Ririka'],
-  },
-  {
-    name: 'Hiodoshi Ao',
-    ytId: 'UCMGfV7TVTmHhEErVJg1oHBQ',
-    chName: 'Ao Ch. 火威青 ‐ ReGLOSS',
-    picture: 'dont put anything here',
-    groups: ['DEV_IS: ReGLOSS'],
-    twitter: 'hiodoshiao',
-    aliases: ['Hiodoshi','Ao'],
   },
   {
     name: 'hololive DEV_IS ReGLOSS',
