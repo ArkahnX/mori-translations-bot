@@ -11,7 +11,7 @@ function findInitialData(data: string) {
 }
 
 export async function getLatestPost(channelId: string): Promise<CommunityPost | undefined> {
-  const channelUrl = `https://www.youtube.com/channel/${channelId}/community`
+  const channelUrl = `https://www.youtube.com/channel/${channelId}/posts`
   const headers = { 'Accept-Language': 'en' }
   const page = await getText(channelUrl, { headers })
   const data = findInitialData(page);
@@ -32,7 +32,7 @@ export interface CommunityPost {
 
 function extractYtData(ytData: any, ytId: string): CommunityPost | undefined {
   const tabs = ytData.contents?.twoColumnBrowseResultsRenderer.tabs
-  const communityTab = tabs.find((t: any) => t?.tabRenderer?.title === 'Community')
+  const communityTab = tabs.find((t: any) => t?.tabRenderer?.title === 'Posts')
   const content = communityTab?.tabRenderer?.content
   if (content === undefined) {
     return undefined
