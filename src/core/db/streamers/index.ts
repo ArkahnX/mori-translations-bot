@@ -43,7 +43,7 @@ export function getStreamerList(): string {
 
 export function findStreamerName(name: string): StreamerName | undefined {
   const bySubname = streamers.find((s) => s.name.split(' ').some((word) => ciEquals(word, name)))
-  const byFullName = streamers.find((s) => s.name === name)
+  const byFullName = streamers.find((s) => ciEquals(s.name, name))
   const byAlias = streamers.find((s) =>
     s.aliases?.some((a) => (typeof a === 'string' ? ciEquals(a, name) : name.match(a))),
   )
