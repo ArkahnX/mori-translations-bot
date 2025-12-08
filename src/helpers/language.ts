@@ -14,7 +14,7 @@ export function match(
   return patterns instanceof Map
     ? patterns.get(scrutinee ?? 'default') ?? doNothing
     : typeof scrutinee === 'string'
-    ? patterns[scrutinee] ?? 'default' ?? doNothing
+    ? patterns[scrutinee ?? 'default'] ?? doNothing
     : throwIt(new TypeError('Invalid scrutinee type. Try using a Map.'))
 }
 
