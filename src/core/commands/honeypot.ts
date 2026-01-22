@@ -53,6 +53,7 @@ export const honeypot: Command = {
       process.env.DISCORD_HONEYPOT_CHANNEL_ID,
     )
     const manageServerPermission = permissions?.has(PermissionsBitField.Flags.ManageGuild)
+    const moderateServerPermission = permissions?.has(PermissionsBitField.Flags.ModerateMembers)
     const viewChannelPermission = permissions?.has(PermissionsBitField.Flags.ViewChannel)
 
     if (verb === 'state') {
@@ -65,8 +66,13 @@ export const honeypot: Command = {
         .addFields(
           { name: 'Issue Bans', value: settings.honeypot ? '✅' : '❌', inline: true },
           {
-            name: 'Permissions',
+            name: 'Manage Server Permissions',
             value: manageServerPermission ? '✅' : '❌',
+            inline: true,
+          },
+           {
+            name: 'Moderate Members Permissions',
+            value: moderateServerPermission ? '✅' : '❌',
             inline: true,
           },
           {

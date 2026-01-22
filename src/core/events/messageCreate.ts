@@ -33,6 +33,7 @@ export async function messageCreate(msg: Message): Promise<void> {
 
   const permissions = msg.guild?.members.me?.permissionsIn(process.env.DISCORD_HONEYPOT_CHANNEL_ID)
   const manageServerPermission = permissions?.has(PermissionsBitField.Flags.ManageGuild)
+  const moderateServerPermission = permissions?.has(PermissionsBitField.Flags.ModerateMembers)
   const viewChannelPermission = permissions?.has(PermissionsBitField.Flags.ViewChannel)
   if (viewChannelPermission === false) return
 
@@ -45,24 +46,11 @@ export async function messageCreate(msg: Message): Promise<void> {
   const settings = getSettings(msg.guild!)
   const honeypot = settings.honeypot
 
-  if (manageServerPermission === true && honeypot === true) {
-    try {
-      const results = await msg.guild?.bans.bulkCreate([author.id], {
-        deleteMessageSeconds: 60 * 60,
-      })
-      // const results = { bannedUsers: [] }
-      if (results?.bannedUsers.length === 0) {
-        log(oneLine`could not ban user ${author.id}`)
-      } else {
-        log(oneLine`successfully banned user ${author.id}`)
-        successfulBan = true
-        // await msg.guild?.bans.remove(author.id)
-      }
-    } catch (err) {
-      debug('Unable to ban user: ' + err)
-    }
+  if (manageServerPermission === true && honeypot === true && moderateServerPermission === true) {
+    await author.timeout(60 * 60 * 1000, 'Triggered the honeypot')
+    successfulBan = await delayedBan(author, msg)
   } else {
-    log(oneLine`banning users is disabled ${author.id}`)
+    log(oneLine`Unable to ban user. Please check /honeypot state if you think this is a mistake ${author.id}`)
     banningDisabled = true
   }
 
@@ -93,7 +81,7 @@ export async function messageCreate(msg: Message): Promise<void> {
       if (banningDisabled) {
         embed.setTitle('Banning users is disabled')
         embed.setDescription(
-          'Honeypot triggered. Use the `/honeypot` command to enable banning non-mod users',
+          'Unable to ban user. Please check /honeypot state if you think this is a mistake',
         )
       }
       if (media !== '') {
@@ -124,4 +112,28 @@ export async function messageCreate(msg: Message): Promise<void> {
       debug('Unable to send message to log channel: ' + err)
     }
   }
+}
+
+function delayedBan(author: GuildMember, msg: Message) {
+  return new Promise<boolean>(async (resolve, reject) => {
+    setTimeout(async function () {
+      try {
+        const results = await msg.guild?.bans.bulkCreate([author.id], {
+          deleteMessageSeconds: 60 * 60,
+        })
+        // const results = { bannedUsers: [] }
+        if (results?.bannedUsers.length === 0) {
+          log(oneLine`could not ban user ${author.id}`)
+          resolve(false)
+        } else {
+          log(oneLine`successfully banned user ${author.id}`)
+          // await msg.guild?.bans.remove(author.id)
+          resolve(true)
+        }
+      } catch (err) {
+        debug('Unable to ban user: ' + err)
+        resolve(false)
+      }
+    }, 3000)
+  })
 }
