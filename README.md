@@ -13,6 +13,14 @@ The code is messy, but its being fixed, slowly.
 - Easy translator blacklisting system 
 
 ## Screenshots
+Main Page
 
-![image](https://media.discordapp.net/attachments/841692109413023787/1150346611889807360/image.png)
-![image](https://media.discordapp.net/attachments/841692109413023787/1150346309082034206/image.png)
+![image](/images/example_3.png)
+
+Translations working
+
+![image](/images/example_2.png)
+
+Autoflag function
+
+![image](/images/example_1.png)
